@@ -1,0 +1,82 @@
+.main .page-title,
+.description {
+  text-align: center;
+}
+
+.main .page-title {
+  font-size: 3.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.main .description {
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.main .content-wrapper {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.main .content-wrapper .email-title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.main .content-wrapper .email-title i {
+  margin-right: 1rem;
+}
+
+.main .content-wrapper .textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem;
+  border-radius: 1rem;
+  resize: none;
+  font-weight: 300;
+  height: 10rem;
+  width: 100%;
+  font-family: "Nunito Sans", sans-serif;
+  border: 1px solid rgb(229 231 235 / var(--tw-border-opacity, 1));
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.main .content-wrapper .textarea:focus {
+  border-color: #ff9408;
+  box-shadow: 0 0 0 3px rgba(255, 148, 8, 0.1);
+  outline: none;
+}
+
+.main .content-wrapper .button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.main .content-wrapper .analyze-button {
+  background: linear-gradient(135deg, #ff9408 0%, #ff7b00 100%);
+  color: white;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.main .content-wrapper .analyze-button:hover {
+  background: linear-gradient(135deg, #ff7b00 0%, #f56500 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(255, 148, 8, 0.3),
+    0 4px 6px -2px rgba(255, 148, 8, 0.2);
+}
+
+.main .content-wrapper .analyze-button:active {
+  transform: translateY(0);
+}
