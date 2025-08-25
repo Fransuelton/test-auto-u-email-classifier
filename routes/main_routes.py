@@ -25,7 +25,21 @@ def processar():
     try:
         texto_pre = preprocessar_texto(texto)
         resultado = analisar_email_openai(texto_pre)
+        # Separar categoria e resposta
+        categoria = None
+        resposta = None
+        if resultado:
+            for linha in resultado.splitlines():
+                if linha.lower().startswith('categoria:'):
+                    categoria = linha.split(':',1)[1].strip()
+                elif linha.lower().startswith('resposta:'):
+                    resposta = linha.split(':',1)[1].strip()
+        if not categoria:
+            categoria = 'Não identificado'
+        if not resposta:
+            resposta = resultado
     except Exception as e:
-        resultado = f"Erro ao analisar email: {e}"
-    return render_template("index.html", resultado=resultado)
+        categoria = 'Erro'
+        resposta = f"Erro ao analisar email: {e}"
+    return render_template("index.html", categoria=categoria, resposta=resposta)
 
