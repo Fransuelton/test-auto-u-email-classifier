@@ -3,63 +3,130 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intelligent Email Analyzer</title>
+    <meta
+      name="description"
+      content="Uma aplicação web que classifica e-mails como Produtivos ou Improdutivos e sugere respostas automáticas usando análise inteligente."
+    />
+    <meta name="author" content="Fransuelton Francisco" />
+    <title>Analisador Inteligente de E-mails</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='assets/icons8-email-96.ico') }}"
+      type="image/x-icon"
     />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles/main.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
   </head>
   <body>
-    <main class="main">
-      <h1 class="page-title">Intelligent Email Analyzer</h1>
+    <header class="header">
+      <i class="fa-solid fa-brain"></i>
+      <h1 class="page-title">Analisador Inteligente de E-mails</h1>
       <p class="description">
-        Classifies emails as Productive or Unproductive and suggests automatic
-        responses
+        Classifica e-mails como Produtivos ou Improdutivos e sugere respostas
+        automáticas de forma inteligente e eficiente.
       </p>
+    </header>
+
+    <main class="main">
       <div class="content-wrapper">
         <form method="POST" action="/processar" enctype="multipart/form-data">
-          <label class="email-title"
-            ><i class="fas fa-envelope"></i>Email Content</label
-          ><br />
+          <label class="textarea-label">
+            <i class="fa-regular fa-envelope"></i>
+            Conteúdo do E-mail
+          </label>
+
           <textarea
             name="email_texto"
-            placeholder="Paste your email content here or upload a file below..."
+            placeholder="Cole o conteúdo do e-mail aqui ou envie um arquivo abaixo..."
             class="textarea"
-          ></textarea
-          ><br />
-          <label for="File" class="upload-label">
+            rows="10"
+          ></textarea>
+
+          <label for="file" class="upload-label">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
 
-            <span class="title">Send your .txt or .pdf files here:</span>
+            <span class="title">Envie seu arquivo .txt ou .pdf:</span>
 
-            <span class="button">Browse files</span>
+            <span class="button">Selecionar arquivo</span>
 
             <input
-              multiple
               type="file"
-              id="File"
+              id="file"
               class="upload-input"
               name="email_arquivo"
               title="email"
               accept=".txt,.pdf"
             />
           </label>
+
           <div class="button-wrapper">
-            <button type="submit" class="analyze-button">Analyze Email</button>
+            <button type="submit" class="analyze-button" id="analyze-btn">
+              <span id="analyze-btn-text">Analisar E-mail</span>
+              <span id="analyze-btn-loading" style="display: none"
+                ><i class="fa fa-spinner fa-spin"></i> Processando...</span
+              >
+            </button>
           </div>
         </form>
 
-        {% if resultado %}
+        {% if categoria or resposta %}
         <div class="resultado">
-          <h2>Classification Result</h2>
-          <pre>{{ resultado }}</pre>
+          <h2>Resultado da Classificação</h2>
+          <div class="categoria">
+            <strong>Categoria:</strong>
+            <span
+              class="categoria-badge {% if categoria.lower() == 'produtivo' %}categoria-produtivo{% else %}categoria-improdutivo{% endif %}"
+              >{{ categoria }}</span
+            >
+          </div>
+          <div class="resposta-wrapper">
+            <p>
+              <i class="fa-regular fa-message"></i>
+              Resposta Sugerida
+            </p>
+            <div class="resposta-actions">
+              <pre id="resposta-text">{{ resposta }}</pre>
+              <button
+                class="copiar-btn"
+                onclick="copiarResposta()"
+                title="Copiar resposta"
+              >
+                <i class="fa-regular fa-copy"></i> Copiar
+              </button>
+            </div>
+          </div>
         </div>
         {% endif %}
       </div>
     </main>
+    <footer>
+      <div class="footer-content">
+        <span
+          >&copy; 2025 Fransuelton Francisco. Todos os direitos
+          reservados.</span
+        >
+        <span>
+          <a href="mailto:fransuelton@email.com" title="Enviar e-mail">
+            <i class="fa-regular fa-envelope"></i> Contato
+          </a>
+          |
+          <a
+            href="https://github.com/fransuelton"
+            target="_blank"
+            rel="noopener"
+            title="GitHub"
+          >
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </span>
+      </div>
+    </footer>
+    <script src="../static/scripts/index.js"></script>
   </body>
 </html>
