@@ -102,7 +102,7 @@ User Input (.txt/.pdf/text) -> Flask Route -> Preprocessing (spaCy/NLTK) -> Open
 
 | Home (Upload) | Result |
 |---------------|--------|
-| ![Home Screenshot](./assets/screens/home.png) | ![Result Screenshot](./assets/screens/result.png) |
+| ![Home Screenshot](.github/readme/home.png) | ![Result Screenshot](.github/readme/result.png) |
 
 ---
 
