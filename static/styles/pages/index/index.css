@@ -147,8 +147,11 @@ footer {
 
 .analyze-button[disabled],
 .analyze-button:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: not-allowed;
+  background: #ccc !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 #analyze-btn-loading {
   display: inline-flex;
