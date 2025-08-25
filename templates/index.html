@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intelligent Email Analyzer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/main.css') }}"
+    />
+  </head>
+  <body>
+    <main class="main">
+      <h1 class="page-title">Intelligent Email Analyzer</h1>
+      <p class="description">
+        Classifies emails as Productive or Unproductive and suggests automatic
+        responses
+      </p>
+      <div class="content-wrapper">
+        <form method="POST" action="/processar" enctype="multipart/form-data">
+          <label class="email-title"
+            ><i class="fas fa-envelope"></i>Email Content</label
+          ><br />
+          <textarea
+            name="email_texto"
+            placeholder="Paste your email content here or upload a file below..."
+            class="textarea"
+          ></textarea
+          ><br />
+          <label for="File" class="upload-label">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+            <span class="title">Send your .txt or .pdf files here:</span>
+
+            <span class="button">Browse files</span>
+
+            <input
+              multiple
+              type="file"
+              id="File"
+              class="upload-input"
+              name="email_arquivo"
+              title="email"
+              accept=".txt,.pdf"
+            />
+          </label>
+          <div class="button-wrapper">
+            <button type="submit" class="analyze-button">Analyze Email</button>
+          </div>
+        </form>
+
+        {% if resultado %}
+        <div class="resultado">
+          <h2>Classification Result</h2>
+          <pre>{{ resultado }}</pre>
+        </div>
+        {% endif %}
+      </div>
+    </main>
+  </body>
+</html>
