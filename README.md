@@ -129,17 +129,23 @@ pip install -r requirements.txt
 
 # Download spaCy Portuguese model
 python -m spacy download pt_core_news_sm
+
+# Set your OpenAI API key
+export OPENAI_API_KEY="your-api-key-here"
+
+# Run the application
+python main.py
 ```
 
 ---
 
 ## 🔌 API Documentation
 
-- `/processar` (POST): Process email text or file and return classification and reply (web form)
-- `/classify` (POST): JSON API for classification
-- `/emails` (GET): List mock emails
-- `/emails/<id>` (GET): Get mock email by ID
-- `/health` (GET): Health check
+- `/process` (POST): Process email text or file and return classification and reply (web form)
+- `/api/classify` (POST): JSON API for classification
+- `/api/emails` (GET): List mock emails
+- `/api/emails/<id>` (GET): Get mock email by ID
+- `/api/health` (GET): Health check
 
 ---
 
@@ -153,14 +159,26 @@ Manual testing via the web interface and API endpoints. (Automated tests can be 
 
 ```bash
 test-auto-u-email-classifier/
-├── app.py
-├── requirements.txt
-├── templates/
+├── main.py                 # Main Flask application
+├── utils.py               # Utility functions (NLP, OpenAI, PDF processing)
+├── requirements.txt       # Python dependencies
+├── Procfile              # Deployment configuration
+├── README.md             # Project documentation
+├── routes/               # Flask routes
+│   ├── __init__.py
+│   ├── main_routes.py    # Web interface routes
+│   └── api_routes.py     # API endpoints
+├── templates/            # HTML templates
 │   └── index.html
-├── static/
-├── email_improdutivo.txt
-├── email_produtivo.txt
-└── ...
+├── static/               # Static assets
+│   ├── styles/          # CSS files
+│   ├── scripts/         # JavaScript files
+│   └── assets/          # Images and icons
+└── examples/             # Sample email files
+    ├── email_improdutivo.txt
+    ├── email_improdutivo.pdf
+    ├── email_produtivo.txt
+    └── email_produtivo.pdf
 ```
 
 ---
@@ -174,10 +192,12 @@ test-auto-u-email-classifier/
 
 ## 🎯 What I Learned
 
-- How to integrate NLP preprocessing with AI APIs for real-world automation
-- Handling file uploads and PDF extraction in Flask
-- Prompt engineering for reliable AI classification and reply generation
-- Best practices for environment variables and API key security
+- **NLP Integration**: How to integrate NLP preprocessing with AI APIs for real-world automation
+- **File Processing**: Handling file uploads and PDF extraction in Flask applications
+- **AI Engineering**: Prompt engineering for reliable AI classification and reply generation
+- **Security**: Best practices for environment variables and API key security
+- **Code Organization**: Structuring Flask applications with blueprints and modular design
+- **Bilingual Development**: Maintaining English code standards while supporting Portuguese content
 
 ---
 
