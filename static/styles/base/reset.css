@@ -15,5 +15,22 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 144rem;
+  margin: 0 auto;
+  padding: 2rem;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0.5rem;
+  }
 }
