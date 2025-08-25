@@ -156,14 +156,14 @@ footer {
   gap: 0.7rem;
   font-size: 1.4rem;
 }
-.categoria {
+.category {
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.7rem;
 }
-.categoria-badge {
+.category-badge {
   border-radius: 0.7rem;
   padding: 0.3rem 1.1rem;
   font-weight: 600;
@@ -173,26 +173,26 @@ footer {
   text-transform: capitalize;
   color: #fff;
 }
-.categoria-produtivo {
+.category-productive {
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
 }
-.categoria-improdutivo {
+.category-unproductive {
   background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
 }
-.resposta-wrapper {
+.response-wrapper {
   margin-bottom: 0.5rem;
 }
 
-.resposta-wrapper p {
+.response-wrapper p {
   font-size: 1.6rem;
   margin-bottom: 1rem;
 }
-.resposta-actions {
+.response-actions {
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
 }
-.copiar-btn {
+.copy-btn {
   background: #fff;
   border: 1px solid #ff9408;
   color: #ff9408;
@@ -206,25 +206,25 @@ footer {
   align-items: center;
   gap: 0.5rem;
 }
-.copiar-btn:hover {
+.copy-btn:hover {
   background: #ff9408;
   color: #fff;
 }
-.resultado {
+.result {
   width: 100%;
   text-align: left;
   transition: box-shadow 0.2s;
   margin-top: 3rem;
 }
 
-.resultado h2 {
+.result h2 {
   font-size: 2.2rem;
   margin-bottom: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
 
-.resultado pre {
+.result pre {
   background: #f8fafc;
   color: #222;
   font-size: 1.7rem;

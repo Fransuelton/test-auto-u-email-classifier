@@ -35,14 +35,14 @@
 
     <main class="main">
       <div class="content-wrapper">
-        <form method="POST" action="/processar" enctype="multipart/form-data">
+        <form method="POST" action="/process" enctype="multipart/form-data">
           <label class="textarea-label">
             <i class="fa-regular fa-envelope"></i>
             Conteúdo do E-mail
           </label>
 
           <textarea
-            name="email_texto"
+            name="email_text"
             placeholder="Cole o conteúdo do e-mail aqui ou envie um arquivo abaixo..."
             class="textarea"
             rows="10"
@@ -59,7 +59,7 @@
               type="file"
               id="file"
               class="upload-input"
-              name="email_arquivo"
+              name="email_file"
               title="email"
               accept=".txt,.pdf"
             />
@@ -75,26 +75,26 @@
           </div>
         </form>
 
-        {% if categoria or resposta %}
-        <div class="resultado">
+        {% if category or response %}
+        <div class="result">
           <h2>Resultado da Classificação</h2>
-          <div class="categoria">
+          <div class="category">
             <strong>Categoria:</strong>
             <span
-              class="categoria-badge {% if categoria.lower() == 'produtivo' %}categoria-produtivo{% else %}categoria-improdutivo{% endif %}"
-              >{{ categoria }}</span
+              class="category-badge {% if category.lower() == 'produtivo' %}category-productive{% else %}category-unproductive{% endif %}"
+              >{{ category }}</span
             >
           </div>
-          <div class="resposta-wrapper">
+          <div class="response-wrapper">
             <p>
               <i class="fa-regular fa-message"></i>
               Resposta Sugerida
             </p>
-            <div class="resposta-actions">
-              <pre id="resposta-text">{{ resposta }}</pre>
+            <div class="response-actions">
+              <pre id="response-text">{{ response }}</pre>
               <button
-                class="copiar-btn"
-                onclick="copiarResposta()"
+                class="copy-btn"
+                onclick="copyResponse()"
                 title="Copiar resposta"
               >
                 <i class="fa-regular fa-copy"></i> Copiar

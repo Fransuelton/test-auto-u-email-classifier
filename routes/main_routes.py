@@ -1,5 +1,5 @@
 
-from utils import analisar_email_openai, preprocessar_texto, extrair_texto_pdf
+from utils import analyze_email_openai, preprocess_text, extract_text_from_pdf
 from flask import Blueprint, render_template, request
 
 main_bp = Blueprint('main', __name__)
@@ -8,38 +8,38 @@ main_bp = Blueprint('main', __name__)
 def index():
     return render_template("index.html")
 
-@main_bp.route("/processar", methods=["POST"])
-def processar():
-    # Pegar texto direto
-    texto = request.form.get("email_texto")
-    # Se não houver texto, tentar pegar arquivo
-    if not texto and "email_arquivo" in request.files:
-        arquivo = request.files["email_arquivo"]
-        if arquivo.filename.endswith('.pdf'):
-            texto = extrair_texto_pdf(arquivo)
+@main_bp.route("/process", methods=["POST"])
+def process_email():
+    # Get text directly
+    text = request.form.get("email_text")
+    # If no text, try to get file
+    if not text and "email_file" in request.files:
+        file = request.files["email_file"]
+        if file.filename.endswith('.pdf'):
+            text = extract_text_from_pdf(file)
         else:
-            texto = arquivo.read().decode("utf-8")
-    if not texto:
-        return render_template("index.html", resultado="Nenhum texto fornecido.")
-    # Chamar a IA da OpenAI para analisar
+            text = file.read().decode("utf-8")
+    if not text:
+        return render_template("index.html", result="Nenhum texto fornecido.")
+    # Call OpenAI to analyze
     try:
-        texto_pre = preprocessar_texto(texto)
-        resultado = analisar_email_openai(texto_pre)
-        # Separar categoria e resposta
-        categoria = None
-        resposta = None
-        if resultado:
-            for linha in resultado.splitlines():
-                if linha.lower().startswith('categoria:'):
-                    categoria = linha.split(':',1)[1].strip()
-                elif linha.lower().startswith('resposta:'):
-                    resposta = linha.split(':',1)[1].strip()
-        if not categoria:
-            categoria = 'Não identificado'
-        if not resposta:
-            resposta = resultado
+        preprocessed_text = preprocess_text(text)
+        result = analyze_email_openai(preprocessed_text)
+        # Separate category and response
+        category = None
+        response = None
+        if result:
+            for line in result.splitlines():
+                if line.lower().startswith('categoria:'):
+                    category = line.split(':',1)[1].strip()
+                elif line.lower().startswith('resposta:'):
+                    response = line.split(':',1)[1].strip()
+        if not category:
+            category = 'Não identificado'
+        if not response:
+            response = result
     except Exception as e:
-        categoria = 'Erro'
-        resposta = f"Erro ao analisar email: {e}"
-    return render_template("index.html", categoria=categoria, resposta=resposta)
+        category = 'Erro'
+        response = f"Erro ao analisar email: {e}"
+    return render_template("index.html", category=category, response=response)
 

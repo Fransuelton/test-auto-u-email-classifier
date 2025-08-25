@@ -11,7 +11,7 @@ if (form && btn && btnText && btnLoading) {
   });
 }
 
-function copiarResposta() {
-  const texto = document.getElementById("resposta-text").innerText;
-  navigator.clipboard.writeText(texto);
+function copyResponse() {
+  const text = document.getElementById("response-text").innerText;
+  navigator.clipboard.writeText(text);
 }
