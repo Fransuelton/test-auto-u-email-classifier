@@ -110,6 +110,7 @@ footer {
   font-size: 1.5rem;
   font-weight: 400;
   color: #222;
+  text-align: center;
 }
 
 .footer-content {
@@ -192,6 +193,7 @@ footer {
 }
 .response-actions {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem;
 }
