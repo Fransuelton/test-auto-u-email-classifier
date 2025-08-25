@@ -33,6 +33,7 @@
   - [🧪 Testing](#-testing)
   - [📁 Folder Structure](#-folder-structure)
   - [☁️ Deployment](#️-deployment)
+    - [🌐 Live Demo](#-live-demo)
   - [🎯 What I Learned](#-what-i-learned)
   - [🤝 Contributing](#-contributing)
   - [📄 License](#-license)
@@ -187,6 +188,9 @@ test-auto-u-email-classifier/
 
 - Deployable to Render, Hugging Face Spaces, Vercel, or any cloud platform supporting Python/Flask.
 - Set the `OPENAI_API_KEY` environment variable before running.
+
+### 🌐 Live Demo
+- **Render:** [https://test-auto-u-email-classifier.onrender.com/](https://test-auto-u-email-classifier.onrender.com/)
 
 ---
 
